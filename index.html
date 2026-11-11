@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CIS, country by country</title>
+<meta name="description" content="An interactive installation: the countries of the Commonwealth of Independent States as 3D maps, with key facts for each.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Cinzel:wght@800&family=DM+Serif+Display:ital@1&family=Gloock&family=Instrument+Sans:wght@400;500;600;700&family=Marcellus&family=Rakkas&family=Russo+One&family=Syne:wght@800&family=Unbounded:wght@700&family=Yeseva+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="stage" id="stage">
+  <canvas id="scene" aria-label="3D map of the selected country, textured with its flag. Drag to rotate."></canvas>
+</div>
+
+<header class="top">
+  <p class="brand">Commonwealth of Independent States</p>
+  <p class="count" aria-live="polite"><span id="idx">1</span> of <span id="total">10</span></p>
+</header>
+
+<main class="layout">
+  <section class="hero" aria-live="polite">
+    <p class="status" id="status"></p>
+    <h1 class="name" id="name"></h1>
+    <p class="official" id="official"></p>
+  </section>
+
+  <aside class="card" id="card" aria-label="Country facts">
+    <div class="cell sym" id="sym"></div>
+    <div class="cell cap">
+      <span class="k">Capital</span>
+      <strong id="capital"></strong>
+      <span class="symlabel" id="symlabel"></span>
+    </div>
+    <p class="cell txt" id="text"></p>
+    <div class="cell stat"><span class="k">Population</span><strong id="pop"></strong><span class="sub" id="popnote"></span></div>
+    <div class="cell stat"><span class="k">Area</span><strong id="area"></strong><span class="sub">km²</span></div>
+    <div class="cell stat"><span class="k">GDP, nominal</span><strong id="gdp"></strong><span class="sub">US dollars, 2026</span></div>
+    <div class="cell stat"><span class="k">GDP per person</span><strong id="pc"></strong><span class="sub">US dollars</span></div>
+    <dl class="cell facts">
+      <div><dt>Currency</dt><dd id="currency"></dd></div>
+      <div><dt>Language</dt><dd id="languages"></dd></div>
+      <div><dt>Independence</dt><dd id="independence"></dd></div>
+      <div><dt>Worth knowing</dt><dd id="fact"></dd></div>
+    </dl>
+    <div class="cell pres">
+      <canvas id="bust" aria-hidden="true"></canvas>
+      <div class="presmeta">
+        <span class="k">President</span>
+        <strong id="leader"></strong>
+        <span class="sub" id="since"></span>
+        <span class="sub note" id="leadernote"></span>
+      </div>
+    </div>
+  </aside>
+</main>
+
+<nav class="nav" aria-label="Countries">
+  <button class="arrow" id="prev" aria-label="Previous country">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 5l-7 7 7 7" /></svg>
+  </button>
+  <button class="arrow" id="next" aria-label="Next country">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 5l7 7-7 7" /></svg>
+  </button>
+  <p class="upnext">Next: <span id="nextname"></span></p>
+  <div class="rail" id="rail"></div>
+</nav>
+
+<p class="credit">Figures are rounded. Population: national statistics and UN estimates, 2025–26. GDP: IMF, April 2026. Outlines: Natural Earth.</p>
+
+<script src="app.js"></script>
+</body>
+</html>
